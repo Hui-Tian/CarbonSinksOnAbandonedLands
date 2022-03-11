@@ -1,0 +1,24 @@
+#map {
+    height: 400px; width:600px
+}
+#content {
+    display:flex;
+    flex-direction:row;
+    margin-left: 2rem;
+    
+}
+
+h1 {
+    margin-left: 2rem;
+}
+
+p  {
+    margin-left: 2rem;
+    font-weight: bold;
+}
+
+dt {
+    display: list-item;
+    list-style-type: disc;
+    margin-left: 2rem;
+    }
