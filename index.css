@@ -1,0 +1,39 @@
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1rem;
+  height: 100vh;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  background-color: white;
+  color: black;
+}
+
+#map { height: 90%;}
+#header {
+  padding-left: 3rem;
+  padding-bottom: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+}
+#central {
+  height: 100%;
+  width:85rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+#title {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+#content {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  
+}
+
+
+

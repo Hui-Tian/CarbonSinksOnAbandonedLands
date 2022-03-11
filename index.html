@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Part 1: GeoJSON</title>
+
+    <!-- Stylesheet for Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+
+    <!-- Exercise stylesheet -->
+    <link href="index.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="header">
+       RePowering Military Brownfields
+    </div>
+    <div id="central">
+      <div id="map"></div>
+      <div id="title">
+        Description: 
+      </div>
+      <div id="content">
+        <P>
+          This dataset is composed of municipal landfills, sites constructed for the disposal of municipal solid waste (MSW). Landfills of this type vary morphologically, but tend to be constructed with impermeable membranes (usually plastic and/or clay) below and above the waste, to prevent waste material from leaking out into the water table or surrounding landscape. The impermeable caps found on most modern landfills necessitates the construction of drainage infrastructure to facilitate the flow of water off the cap. On the surface, this infrastructure manifests as channels of rocks found downhill from drainage outlets.
+        </P>
+        <p>
+          Typically, the top of a landfill is also capped with layers of aggregate, soil, and vegetation. Most landfills in the US are maintained in a state of arrested succession to prevent the growth of woody plants and trees, which could present issues for the ongoing integrity of the cap (though some studies contradict this assumption).
+        </p>
+        <p>
+          Another feature unique to this site type is the presence of methane monitoring and capturing infrastructure. Methane and other gases released through the decomposition of interred waste can present hazards, both through the direct risks of flammable gas under pressure and the indirect risks posed by climate change. In the interest of managing these risks, and in some cases generating electricity, many landfills have below-ground networks of pipes that either a) safely vent them out of the landfill or b) collect the gases for use as fuel.   
+         </p>
+         <p>
+          As sites for transformation, municipal landfills hold much promise, both in relation to energy generation (as brightfields), and as potential sites for NCS & habitat restoration (see Freshkills Park). Speculation on the implementation of these transformations within the constraints of this site type can be found at the end of this chapter, along with estimates of the net annual energy production and carbon sequestration potential.
+        </p>
+    </div>
+    <script type="text/javascript" src="//ofmpub.epa.gov/sor_internet/js/searchWidget.js"></script>
+
+    <link href="//ofmpub.epa.gov/sor_internet/css/redmond/jquery-ui-1.8.17.custom.css" rel="stylesheet">
+
+    <div class="tsSearchWidget"></div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <!-- Exercise JavaScript -->
+    <script src="index.js"></script>
+  </body>
+</html>
