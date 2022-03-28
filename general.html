@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Carbon Sinks On Abandoned Lands</title>
+        <!-- width match to screen viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+        <link rel="stylesheet" href="general.css">
+    </head>
+    <body>
+        <h1>Carbon Sinks On Abandoned Lands</h1>
+        <div id="content">
+            
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Category Group</button>
+                <div id="myDropdown" class="dropdown-content">
+                  <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                  <a class="agriculture"> <span class="color-dot"></span> Agriculture</a>
+                  <a class="industrial"><span class="color-dot"></span> Industrial</a>
+                  <a class="institutional"><span class="color-dot"></span> Institutional</a>
+                  <a class="military-link" href="index.html"><span class="color-dot"></span> Military</a>
+                  <a class="mine"><span class="color-dot"></span> Mine</a>
+                  <a class="petrochemical"><span class="color-dot"></span> Petrochemical</a>
+                  <a class="unclassified"><span class="color-dot"></span> Unclassified</a>
+                  <a class="waste_management"><span class="color-dot"></span> Waste Management</a>
+                  
+                </div>
+              </div>
+
+            <div class="map" id="map">Map</div>
+            
+        </div>
+        <div id="title">
+            Description: 
+          </div>
+          <div id="details">
+            <P>
+              The U.S. Environmental Protection Agency (EPA) created the RE-Powering America’s Land Initiative to demonstrate the enormous potential that contaminated lands, landfills, and mine sites provide for developing renewable energy in the United States. Here is a RE-Powering Mapper tool to show spatial database of more than 75,000 sites that have been evaluated for renewable energy potential.
+            </P>
+
+          </div>
+        
+         <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <!-- Local Java Script-->
+        <script src="general.js"></script>
+    </body>
+</html>
