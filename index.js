@@ -70,6 +70,13 @@ const Militarylabels = {
   "Waste Management":"Military_Waste Management",
   "Facilities":"Military_Facilities"
 }
+
+const Acreage = {
+  "Quartile1":1-600,
+  "Quartile2":601-3500,
+  "Quartile3":3501-1000000,
+  "Quartile4":1000001-2669225
+}
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
@@ -94,7 +101,7 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 let p1;
-fetch('Military.GEOJSON')
+fetch('Military.geojson')
   .then(resp => resp.json())
   .then(data => {
     const features = data.features;
