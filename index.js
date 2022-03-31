@@ -71,12 +71,8 @@ const Militarylabels = {
   "Facilities":"Military_Facilities"
 }
 
-const Acreage = {
-  "Quartile1":1-600,
-  "Quartile2":601-3500,
-  "Quartile3":3501-1000000,
-  "Quartile4":1000001-2669225
-}
+
+
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
 
@@ -119,7 +115,26 @@ fetch('Military.geojson')
             color: "#000",
             weight: 1,
             opacity: 1,
-            fillOpacity: 0.8
+            fillOpacity: 1
+          };
+          return L.circleMarker(latlng, geojsonMarkerOptions);
+        } 
+      })
+        .bindTooltip(feature.properties['Site_Name'])
+        .addTo(map);
+      
+      const radiuslayer = L.geoJSON(feature, {
+        pointToLayer: function (feature, latlng) {
+          const classification = feature.properties['Classifica'];
+          const classColor = Militaryclass[classification];
+
+          var geojsonMarkerOptions = {
+            radius: acreageRange(feature.properties['Acres']),
+            fillColor: classColor,
+            color: "#000",
+            weight: 1,
+            opacity: 0,
+            fillOpacity: 0.5
           };
           return L.circleMarker(latlng, geojsonMarkerOptions);
         } 
@@ -139,7 +154,7 @@ fetch('Military.geojson')
         })
       })
       layer.addEventListener('click', () => {
-        window.location = `/brownfields/${feature.properties['Site_ID']}.html`;
+        window.location = `CarbonSinksOnAbandonedLands/brownfields/${feature.properties['Site_ID']}.html`;
       })
       const lctype = feature.properties['LC_Type'];
       
@@ -150,7 +165,22 @@ fetch('Military.geojson')
  
     updateChart2()
   });
-  
+let acreageRange = (acreage) => {
+  if (acreage < 600) {
+    return 10;
+  }
+  else if (acreage < 3500) {
+    return 14;
+  }
+  else if (acreage < 1000000) {
+    return 18;
+  }
+  else if (acreage < 26000000) {
+    return 22;
+  }
+}
+
+
 let updateChart = () => {
 
     var xValues = Object.keys(lcCount);
