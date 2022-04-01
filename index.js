@@ -154,7 +154,7 @@ fetch('Military.geojson')
         })
       })
       layer.addEventListener('click', () => {
-        window.location = `CarbonSinksOnAbandonedLands/brownfields/${feature.properties['Site_ID']}.html`;
+        window.location = `/CarbonSinksOnAbandonedLands/brownfields/${feature.properties['Site_ID']}.html`;
       })
       const lctype = feature.properties['LC_Type'];
       
