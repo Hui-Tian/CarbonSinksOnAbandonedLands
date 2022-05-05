@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <title>Petrochemical GeoJSON</title>
+
+    <!-- Stylesheet for Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+
+
+    <!-- Exercise stylesheet -->
+    <link href="Petro-index.css" rel="stylesheet">
+  </head>
+  
+  
+  <body>
+    <div id="header">
+      Petrochemical Brownfields
+    </div>
+    <div id="central">
+
+    <div class="top-section">
+      
+      <div class="left-panel">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">SubCategory</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a class="Railways"><span class="color-dot"></span> Railways</a>
+            <a class="Automobiles"><span class="color-dot"></span> Automobiles</a>
+            <a class="Gas_Stations"><span class="color-dot"></span> Gas Stations</a>
+            <a class="Gasification"><span class="color-dot"></span> Gasification</a>
+            <a class="Processing_Transport"><span class="color-dot"></span> Processing + Transport</a>
+            
+          </div>
+        </div>
+
+        <div class="quartile-legend">
+          <div class="quartile-legend-row"></div>
+          <span class="Outliers"></span>
+          < 278 - 14,000 acres<br>
+        
+          <span class="Q4"></span>
+          < 278 acres<br>
+        
+          <span class="Q3"></span>
+          < 11 acres<br>
+        
+          <span class="Q2"></span>
+          < 3.5 acres<br>
+
+          <span class="Q1"></span>
+          < 1.6 acres<br>
+        
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </div>
+    <div class="middle-section">
+      <div id="content-section">
+        <div id="title">
+          Description: 
+        </div>
+        <div id="content">
+        <p>
+          Sites where petrochemical compounds have been manufactured, distributed, transformed or spilled. Toxicity of sites varies, but almost all are likely to have hydrocarbon contamination. Common contaminants include PAHs, hydrocarbons, phenols, BTEX, arsenic, cyanide and lead. Cleanup of these sites is a complicated and expensive process. For some contaminants, bio-, phyto- or myco- remediation can be a viable method for removing or breaking down contaminants in the soil and groundwater, but for these methods timelines can stretch decades into the future.
+        </p>
+        <p>
+          <strong>Gas Stations</strong>: These sites represent a mix of current (operational) and former (abandoned) gas stations. In addition to an assumed level of soil contamination from small above-ground spills and leaks over the course of the gas station’s operation, such sites likely have below-ground tanks for storage of petroleum. Over time, any oil left in these tanks will eventually begin to leak and possibly migrate offsite. It is therefore advisable that any plans to reuse or adapt a gas station to a new purpose include an inspection of the sub-grade conditions. In many cases, it may be necessary to excavate the tanks entirely, raising the question of what material will be used to backfill the resultant voids. In others, the planting of deep-rooted trees along the periphery of the site could help prevent the migration of contamination plumes offsite.
+        </p>
+        <p>
+          <strong>Gasification</strong>: Sites likely contain high levels of contamination. Prior to the widespread availability of ‘natural’ gas, manufactured gas plants transformed coal or oil into gas for lighting, heating, and cooking. The byproducts of this manufacture were highly toxic and were often disposed of onsite. The most economical method of cleanup involves the excavation of large volumes of contaminated soil, which must then be replaced with ‘clean’ soil from elsewhere - either engineered or harvested from elsewhere. Many sites are located near rivers and therefore have high water tables relative to the surface. When contaminated soil in such a site is disturbed, contaminants can become mobile in groundwater and move offsite. Often, sites like these are simply capped with asphalt or other impervious materials and left vacant.
+        </p>
+        <p class="more-description hidden"><strong>Processing + Transport</strong>: This subcategory deals with sites for processing, refining, and transporting petrochemical products. This involves a wide range of facility types, from plastics manufacturers and oil refineries to pipelines and sludge pits. These sites share many of the challenges of the gasification sites. Cleanup of sites such as these would often require the demolition of infrastructure in addition to remediation or capping of contaminated soils.</p>
+
+        <button class="toggle-more-description">Show more...</button>
+        </div>
+      </div>
+      <div id="chart-section">
+        <div id="chart-title">
+          Charts for Analysis: 
+        </div>
+        <div id="charts">
+          <div id="subcategoryPlot"></div>
+          <div id="programPlot"></div>
+          <div id="lcPlot"></div>
+          <div id="EcoPlot"></div>
+          
+          
+           
+        </div>
+        <!--
+        <div id="chart-img">
+          <img src="military_subgroup.jpg" alt="Subcategories of Military Brownfields">
+          <img src="military_subgroup.jpg" alt="Program Distribution">
+          <img src="military_subgroup.jpg" alt="Ecoregion Distribution">
+          <img src="military_subgroup.jpg" alt="Landcover Distribution">
+
+        </div> -->
+      </div>
+
+    </div>
+    <div class="bottom-section">
+      <div id="analysis-section">
+        <div id="analysis-title">
+          Key Information: 
+        </div>
+        <div id="analysis-content">
+          <!--
+          <P>
+            This group of sites represent a wide range of typologies associated with former and current military use. Many of these sites are explicitly owned by branches of the US military, presenting in some ways an obstacle to their repurposing and in other ways a great latent potential for the mobilization of human and capital resources necessary for large-scale landscape transformation.
+          </p>
+          -->
+            <ul style=“list-style-type:square”>
+            <strong><li>Air Contamination:</li></strong><br>
+              <dt>Volatilized contaminants;</dt><br>
+            <li><strong>Subsurface Ground Contamination: </strong></li><br>
+              <dt>PAH;</dt> 
+              <dt>BTEX;</dt>
+              <dt>Heavy Metals;</dt>
+              <dt>fuels leaking from underground tanks;</dt>
+              <dt>Fire suppressant;</dt><br>
+            <li><strong>Groundwater contamination:</strong></li><br>
+              <dt>Volatile Organic Compounds;</dt>
+              <dt>leaking fuels;</dt>
+            </ul>
+          <!--
+          <dl>
+                <dt>Weaponry: Ground contamination</dt>
+                  <dd>Lead <br>Unexploded ordinance</dd>
+                <dt>Aviation</dt>
+                <dt>Facilities</dt>
+          </dl>
+          -->
+
+          </div>
+        </div>
+      <div id="axon-section">
+        <div id="axon-title">
+          Typical Subcategory Axons: 
+        </div>
+        <div id="axon-img">
+          <a href="PETRO1.jpg" data-lightbox="PETRO1" data-title="My caption"><img src="PETRO1.jpg" alt="petro example1"></a>
+          <a href="PETRO2.jpg" data-lightbox="PETRO2" data-title="My caption"><img src="PETRO2.jpg" alt="petro example2"></a>
+          <a href="PETRO3.jpg" data-lightbox="PETRO3" data-title="My caption"><img src="PETRO3.jpg" alt="petro example3"></a>
+          <a href="PETRO4.jpg" data-lightbox="PETRO4" data-title="My caption"><img src="PETRO4.jpg" alt="petro example4"></a>
+      </div>
+      </div>
+
+    </div>
+<!--
+      https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA
+
+      https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.337798,37.810550,9.67,0.00,0.00/1000x600@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA
+-->
+
+    <div id="brownfield-grid">
+      
+    </div>
+    
+<!--
+      <script>
+        setTimeout(() => {
+          const brownfieldGridEl = document.getElementById('brownfield-grid');
+
+          for (let i = 0; i < 6; i++) {
+            const index = Math.floor(Math.random() * jsonData.features.length)
+            const [lng, lat] = jsonData.features[index].geometry.coordinates
+
+            const imgEl = document.createElement('img');
+            imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},16,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
+            brownfieldGridEl.appendChild(imgEl);
+          }
+        }, 1000);
+      </script>
+-->      
+<!--
+      <img alt='static Mapbox map of the San Francisco bay area' src='https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/-122.337798,37.810550,4,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA'>
+      <img alt='static Mapbox map of the San Francisco bay area' src='https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/-122.337798,37.810550,4,0.00,0.00/200x200?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA'>
+-->
+
+    </div>
+    <!-- 
+    <script type="text/javascript" src="//ofmpub.epa.gov/sor_internet/js/searchWidget.js"></script>
+
+    <link href="//ofmpub.epa.gov/sor_internet/css/redmond/jquery-ui-1.8.17.custom.css" rel="stylesheet">
+
+    <div class="tsSearchWidget"></div>
+  -->
+   <!-- Montserrat font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- W3 charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  
+  <!-- W3 PiePlot -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <!-- Exercise JavaScript -->
+    <script src="Petro-index.js"></script>
+  </body>
+</html>

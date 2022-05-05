@@ -13,31 +13,167 @@
   
   <body>
     <div id="header">
-       RePowering Military Brownfields
+      Military Brownfields
     </div>
     <div id="central">
+
+    <div class="top-section">
+      
+      <div class="left-panel">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">SubCategory</button>
+          <div id="myDropdown" class="dropdown-content">
+           <!--  <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">-->
+            <a class="Military_Weaponry"><span class="color-dot"></span> Weaponry</a>
+            <a class="Military_Aviation"><span class="color-dot"></span> Aviation</a>
+            <a class="Military_Waste_Management"><span class="color-dot"></span> Waste_Management</a>
+            <a class="Military_Facilities"><span class="color-dot"></span> Facilities</a>
+            
+          </div>
+        </div>
+
+        <div class="quartile-legend">
+          <div class="quartile-legend-row"></div>
+          <span class="Q10"></span>
+          < 2669225 acres<br>
+        
+          <span class="Q9"></span>
+          < 19081 acres<br>
+        
+          <span class="Q8"></span>
+          < 5249 acres<br>
+        
+          <span class="Q7"></span>
+          < 2500 acres<br>
+
+          <span class="Q6"></span>
+          < 915 acres<br>
+        
+          <span class="Q5"></span>
+          < 560 acres<br>
+        
+          <span class="Q4"></span>
+          < 200 acres<br>
+        
+          <span class="Q3"></span>
+          < 50 acres<br>
+
+          <span class="Q2"></span>
+          < 12 acres<br>
+        
+          <span class="Q1"></span>
+          < 4 acres<br>
+        </div>
+      </div>
+
       <div id="map"></div>
-      <div id="title">
-        Description: 
-      </div>
-      <div id="content">
+    </div>
+    <div class="middle-section">
+      <div id="content-section">
+        <div id="title">
+          Description: 
+        </div>
+        <div id="content">
         <P>
-          This group of sites represent a wide range of typologies associated with former and current military use. Many of these sites are explicitly owned by branches of the US military, presenting in some ways an obstacle to their repurposing and in other ways a great latent potential for the mobilization of human and capital resources necessary for large-scale landscape transformation.
-        </P>
-        <p>
-          Weaponry: This site classification includes all sites with the potential presence of weapons or ammunition, from depots and sites of manufacture to bombing targets and firing ranges. Within this subclass, there is a range of potential danger involved in access to these sites. In some cases, specialized teams and equipment will be necessary to make sites safe for access or intervention.
-        </p>
-        <p>
-          Aviation: These are military airports or areas otherwise related to military aviation. With the exception of a small number of landfills and other disposal sites, the majority of the sites in this subcategory are operational military airfields, a typology with very strict security constraints. It can likely be assumed that for many of these sites, the contaminants present are jet fuel or related components or by-products thereof. Might be possible to group these sites with other aviation sites from other categories, possibly including aerospace sites.
-         </p>
-         <p>
-          Waste Management: Small number of landfills and dumps affiliated with the military. It is unclear whether this affiliation has an impact on the nature of the waste interred at these sites.
-        </p>
+          This group of sites represent a wide range of typologies associated with former and current military use. Many of these sites are explicitly owned by branches of the US military, presenting in some ways an obstacle to their repurposing and in other ways a great latent potential for the mobilization of human and capital resources necessary for large-scale landscape transformation.</p> 
+        <p><strong>Weaponry:</strong>This site classification includes all sites with the potential presence of weapons or ammunition, from depots and sites of manufacture to bombing targets and firing ranges. Within this subclass, there is a range of potential danger involved in access to these sites. In some cases, specialized teams and equipment will be necessary to make sites safe for access or intervention.</p>   
+        <p><strong>Aviation:</strong> These are military airports or areas otherwise related to military aviation. With the exception of a small number of landfills and other disposal sites, the majority of the sites in this subcategory are operational military airfields, a typology with very strict security constraints. It can likely be assumed that for many of these sites, the contaminants present are jet fuel or related components or by-products thereof. Might be possible to group these sites with other aviation sites from other categories, possibly including aerospace sites.</p> 
+        <p><strong>Waste Management:</strong> Small number of landfills and dumps affiliated with the military. It is unclear whether this affiliation has an impact on the nature of the waste interred at these sites.</p> 
+        <p class="more-description hidden">.......</p>
+
+        <button class="toggle-more-description">Show more...</button>
+        </div>
       </div>
-      <div id="charts">
-        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-        <div id="myPlot" style="width:100%;max-width:700px"></div>
+      <div id="chart-section">
+        <div id="chart-title">
+          Charts for Analysis: 
+        </div>
+        <div id="charts">
+            <div id="subcategoryPlot"></div>
+            <div id="programPlot"></div>
+            <div id="lcPlot"></div>
+            <div id="EcoPlot"></div>
+          </div>
+        </div>
       </div>
+
+    
+    <div class="bottom-section">
+      <div id="analysis-section">
+        <div id="analysis-title">
+          Key Information: 
+        </div>
+        <div id="analysis-content">
+          <ul style=“list-style-type:square”>
+            <strong><li>Weaponry Contamination:</li></strong><br>
+              <dt>Ground contamination (Lead, Unexploded ordinance);</dt><br>
+            <li><strong>Aviation Contamination:</strong></li><br>
+              <dt>Air Contamination (Airplane exhaust);</dt> 
+              <dt>Surface Contamination;</dt>
+              <dt>Subsurface Ground Contamination (Jet fuel spills and leaks);</dt>
+              <dt>Subsurface Ground Contamination (Fire surppresant);</dt><br>
+            <li><strong>Facilities Contamination</strong></li><br>
+              <dt>Air Contamination (Airplane exhaust);</dt>
+              <dt>Surface Contamination;</dt>
+              <dt>Subsurface Ground Contamination (Jet fuel spills and leaks);</dt>
+              <dt>Subsurface Ground Contamination (Fire surppresant);</dt>
+              <dt>Groundwater Contamination;</dt>
+            </ul>
+          <!--
+          <dl>
+                <dt>Weaponry: Ground contamination</dt>
+                  <dd>Lead <br>Unexploded ordinance</dd>
+                <dt>Aviation</dt>
+                <dt>Facilities</dt>
+          </dl>
+          -->
+
+          </div>
+        </div>
+      <div id="axon-section">
+        <div id="axon-title">
+          Typical Subcategory Axons: 
+        </div>
+        <div id="axon-img">
+          <img src="Military1.jpg" alt="Aviation">
+          <img src="Military2.jpg" alt="Facility">
+          <img src="Military3.jpg" alt="Bombing">
+          <img src="Military4.jpg" alt="Shooting">
+      </div>
+      </div>
+
+    </div>
+<!--
+      https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA
+
+      https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.337798,37.810550,9.67,0.00,0.00/1000x600@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA
+-->
+
+    <div id="brownfield-grid">
+      
+    </div>
+    
+<!--
+      <script>
+        setTimeout(() => {
+          const brownfieldGridEl = document.getElementById('brownfield-grid');
+
+          for (let i = 0; i < 6; i++) {
+            const index = Math.floor(Math.random() * jsonData.features.length)
+            const [lng, lat] = jsonData.features[index].geometry.coordinates
+
+            const imgEl = document.createElement('img');
+            imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},16,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
+            brownfieldGridEl.appendChild(imgEl);
+          }
+        }, 1000);
+      </script>
+-->      
+<!--
+      <img alt='static Mapbox map of the San Francisco bay area' src='https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/-122.337798,37.810550,4,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA'>
+      <img alt='static Mapbox map of the San Francisco bay area' src='https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/-122.337798,37.810550,4,0.00,0.00/200x200?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA'>
+-->
+
     </div>
     <!-- 
     <script type="text/javascript" src="//ofmpub.epa.gov/sor_internet/js/searchWidget.js"></script>
@@ -46,7 +182,9 @@
 
     <div class="tsSearchWidget"></div>
   -->
-   <!-- W3 charts -->
+   <!-- Montserrat font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- W3 charts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   
   <!-- W3 PiePlot -->

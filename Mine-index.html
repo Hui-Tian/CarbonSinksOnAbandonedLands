@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <title>Mine GeoJSON</title>
+
+    <!-- Stylesheet for Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+
+
+    <!-- Exercise stylesheet -->
+    <link href="Mine-index.css" rel="stylesheet">
+  </head>
+  
+  
+  <body>
+    <div id="header">
+      Mine Brownfields
+    </div>
+    <div id="central">
+
+    <div class="top-section">
+      
+      <div class="left-panel">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">SubCategory</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a class="Mine_Mineral"><span class="color-dot"></span> Mineral</a>
+            <a class="Mine_Coal"><span class="color-dot"></span> Coal</a>
+            <a class="Mine_Hazards"><span class="color-dot"></span> Hazards</a>
+            <a class="Mine_Waste"><span class="color-dot"></span> Waste</a>
+            <a class="Mine_Structures"><span class="color-dot"></span> Structures</a>
+            <a class="Mine_Water"><span class="color-dot"></span> Water</a>
+            <a class="Mine_Unclassified"><span class="color-dot"></span> Unclassified</a>
+            
+          </div>
+        </div>
+
+        <div class="quartile-legend">
+          <div class="quartile-legend-row"></div>
+          <span class="Outliers"></span>
+          < 300 - 424,960 acres<br>
+        
+          <span class="Q4"></span>
+          < 300 acres<br>
+        
+          <span class="Q3"></span>
+          < 17.3 acres<br>
+        
+          <span class="Q2"></span>
+          < 6.2 acres<br>
+
+          <span class="Q1"></span>
+          < 2.7 acres<br>
+        
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </div>
+    <div class="middle-section">
+      <div id="content-section">
+        <div id="title">
+          Description: 
+        </div>
+        <div id="content">
+        <p>
+          These are sites of extraction and the resultant degraded landscapes they leave behind. They represent a wide range of spatial conditions, from open pits, flattened mountaintops, and terraced slopes to lakes of standing water, piles of spoils, and a range of hazardous conditions (sheer cliffs, open portals, undermined areas, etc.)
+        </p>
+        <p>
+          <strong>Coal</strong>: They represent the vast majority of sites in the mines category. Most of them are located in Appalachia. The mining of coal occurs in two primary ways - above ground and below ground. In many sites, surface coal mines are required to engage in some level of ‘restoration’ after mining is complete. This restoration typically involves the seeding of grasses on denuded mountaintops and slopes to reduce erosion. Due to their scale, location, and condition, many sites in this subcategory are ideal for NCS or bright fields intervention.
+        </p>
+        <p>
+          <strong>Mineral</strong>: The key difference between the two is the assumed contamination levels of each. Mineral mines are likely to have less contamination present than coal mines, due to the lower toxicity of the materials being mined and chemicals used in the mining processes. Greatest challenge presented in the classification of this subcategory is inferring the ground condition (eg. surface mine or subsurface mine).
+        </p>
+        <p>
+          <strong>Harzards</strong>: They have little to no potential for productive reuse (NCS/ brightfields/ recreational transformation). These are sheer cliffs, portals to subterranean mines, shaft openings, active fires, and other site conditions that pose direct hazards to people and wildlife. These sites, though not directly ‘useful,’ must be sealed and fenced wherever possible, to avoid the injuries and deaths that they can cause.
+        </p>
+
+        <p class="more-description hidden"><strong>Water</strong>:These sites include a combination of still (lakes/pools) and moving (rivers/streams) water. The primary purpose of interventions is to reduce harm. Many standing water bodies contain highly toxic metals and chemicals. The stream beds of the moving water present a different possibility, as they might be redeemed through restoration, assuming they are not fed by runoff from contaminated areas.<br>
+          <strong>Waste</strong>:It includes a range of waste material disposal locations, various in levels of contamination. The repurposing of these sites is challenging due to the absence of stable ground at these locations. In many cases, the solution will involve a large amount of waste disposal prior to any establishment of soil, grasses, or forest.<br>
+          <strong>Structure</strong>:The sites are ones on which abandoned structures (buildings, machinery, or other constructions are assumed to exist in various stages of decay. In some cases where buildings are in good repair, the structures in question can be renovated and repurposed into museums, community centers, or bases of operation for multi-year restoration efforts. </p>
+
+        <button class="toggle-more-description">Show more...</button>
+        </div>
+      </div>
+      <div id="chart-section">
+        <div id="chart-title">
+          Charts for Analysis: 
+        </div>
+        <div id="charts">
+          <div id="subcategoryPlot"></div>
+          <div id="programPlot"></div>
+          <div id="lcPlot"></div>
+          <div id="EcoPlot"></div>
+
+        </div>
+        <!--
+        <div id="chart-img">
+          <img src="military_subgroup.jpg" alt="Subcategories of Military Brownfields">
+          <img src="military_subgroup.jpg" alt="Program Distribution">
+          <img src="military_subgroup.jpg" alt="Ecoregion Distribution">
+          <img src="military_subgroup.jpg" alt="Landcover Distribution">
+
+        </div> -->
+      </div>
+
+    </div>
+    <div class="bottom-section">
+      <div id="analysis-section">
+        <div id="analysis-title">
+          Intervention Solutions: 
+        </div>
+        <div id="analysis-content">
+
+            <ul style=“list-style-type:square”>
+            <strong><li>NCS Transformation:</li></strong><br>
+              <dt>Topsoil amendment and/or addition;</dt><br>
+              <dt>Seeding of vegetation;</dt><br>
+              <dt>Planting of seedlings;</dt><br>
+              <dt>Maintenance & monitoring;</dt><br>
+            <li><strong>Brightfields Transformation: </strong></li><br>
+              <dt>Geotechnical survey;</dt> 
+              <dt>Construction of foundations;</dt>
+              <dt>Installation of panels and/or turbines;</dt>
+              <dt>fuels leaking from underground tanks;</dt>
+              <dt>Maintenance & monitoring;</dt><br>
+            <li><strong>Cleanup:</strong></li><br>
+              <dt>Repair or construction of cap;</dt>
+              <dt>Remediation of contaminated soils;</dt>
+            </ul>
+
+          </div>
+        </div>
+      <div id="axon-section">
+        <div id="axon-title">
+          Typical Subcategory Axons: 
+        </div>
+        <div id="axon-img">
+          <img src="Mine1.jpg" alt="Subcategories of Military Brownfields">
+          <img src="Mine2.jpg" alt="Program Distribution">
+          <img src="Mine3.jpg" alt="Ecoregion Distribution">
+          <img src="Mine4.jpg" alt="Landcover Distribution">
+      </div>
+      </div>
+
+    </div>
+<!--
+      https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA
+
+      https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.337798,37.810550,9.67,0.00,0.00/1000x600@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA
+-->
+
+    <div id="brownfield-grid">
+      
+    </div>
+    
+<!--
+      <script>
+        setTimeout(() => {
+          const brownfieldGridEl = document.getElementById('brownfield-grid');
+
+          for (let i = 0; i < 6; i++) {
+            const index = Math.floor(Math.random() * jsonData.features.length)
+            const [lng, lat] = jsonData.features[index].geometry.coordinates
+
+            const imgEl = document.createElement('img');
+            imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},16,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
+            brownfieldGridEl.appendChild(imgEl);
+          }
+        }, 1000);
+      </script>
+-->      
+<!--
+      <img alt='static Mapbox map of the San Francisco bay area' src='https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/-122.337798,37.810550,4,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA'>
+      <img alt='static Mapbox map of the San Francisco bay area' src='https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/-122.337798,37.810550,4,0.00,0.00/200x200?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA'>
+-->
+
+    </div>
+    <!-- 
+    <script type="text/javascript" src="//ofmpub.epa.gov/sor_internet/js/searchWidget.js"></script>
+
+    <link href="//ofmpub.epa.gov/sor_internet/css/redmond/jquery-ui-1.8.17.custom.css" rel="stylesheet">
+
+    <div class="tsSearchWidget"></div>
+  -->
+   <!-- Montserrat font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- W3 charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  
+  <!-- W3 PiePlot -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <!-- Exercise JavaScript -->
+    <script src="Mine-index.js"></script>
+  </body>
+</html>
