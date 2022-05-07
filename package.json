@@ -17,7 +17,7 @@
       "Chart": "readonly",
       "L": "readonly",
       "mapboxgl": "readonly",
-
+      "Plotly": "readonly",
       "htmlToElement": "readonly",
       "htmlToElements": "readonly"
     },
@@ -37,6 +37,7 @@
       "prefer-const": "off",
       "quote-props": "off",
       "quotes": "off",
+      "max-len": "off",
       "no-restricted-syntax": [
         "error",
         {

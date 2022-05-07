@@ -1,18 +1,16 @@
 /* ==========
-
-Introduction: In this part you will modify a few GeoJSON files in order to add
-data to your map. Follow the instructions in the steps below. You can see your
+You can see your
 progress visually by running a local web server in the week's repository folder:
 
   npx http-server --port 8000
 
-And navigating to http://localhost:8000/Mine-index.html
+And navigating to http://localhost:8000/index.html
 
 run python for process_brownfields.py in anaconda
 
 python process_brownfields.py
 
-========== *//// ////
+========== */
 
 // The following line disables a couple of linter rules that would normally
 // apply, but should not for this exercise. You can ignore it.
@@ -37,47 +35,44 @@ L.tileLayer('https://api.mapbox.com/styles/v1/tiantianup/cl0zp7ol1004q15ml01xhfv
 
 /* ==========
 
-Step 1: Brownfields: Mine Group
+Step 1: Brownfields: Military Group
 
 ========== */
 
-// Define features in Landcover Charts//
+// Define features in Land cover Charts//
 const lcCount = {
   'Barren Land': 0,
   'Cultivated Crops': 0,
-  // "Developed High Intensity": 0,
+  'Developed High Intensity': 0,
   'Deciduous Forest': 0,
   'Developed Low Intensity': 0,
   'Developed Medium Intensity': 0,
   'Developed Open Space': 0,
-  // "Emergent Herbaceous Wetlands": 0,
+  'Emergent Herbaceous Wetlands': 0,
   'Evergreen Forest': 0,
   'Grassland Herbaceous': 0,
   'Mixed Forest': 0,
   'Open Water': 0,
   'Pasture/Hay': 0,
   'Scrub Shrub': 0,
-  // "Woody Wetlands": 0
+  'Woody Wetlands': 0,
 };
 // Define features in Classification Charts//
 const subcatCount = {
-  Mine_Mineral: 0,
-  Mine_Coal: 0,
-  Mine_Hazards: 0,
-  Mine_Waste: 0,
-  Mine_Structures: 0,
-  Mine_Water: 0,
-  Mine_Unclassified: 0,
+  Military_Weaponry: 0,
+  Military_Aviation: 0,
+  Military_WM: 0,
+  Military_Facilities: 0,
 };
 
 // Define features in Program_General Charts//
 const programCount = {
   // "AML": 0,
-  Brownfields: 0,
-  // "LMOP": 0,
-  // "RCRA": 0,
+  'Brownfields': 0,
+  'LMOP': 0,
+  'RCRA': 0,
   'State Programs': 0,
-  Superfund: 0,
+  'Superfund': 0,
 };
 
 // Define features in Ecoregion Charts//
@@ -87,7 +82,7 @@ const ecoregionCount = {
   'MEDITERRANEAN CALIFORNIA': 0,
   'NORTH AMERICAN DESERTS': 0,
   'NORTHWESTERN FORESTED MOUNTAINS': 0,
-  // "MARINE WEST COAST FOREST":0,
+  'MARINE WEST COAST FOREST': 0,
   // "TROPICAL WET FORESTS":0,
   'NORTHERN FORESTS': 0,
   // "SOUTHERN SEMIARID HIGHLANDS":0,
@@ -95,50 +90,38 @@ const ecoregionCount = {
   // "WATER":0,
   // "NA":0
 };
-
-// Color for legend, responding to Geojson//
-const Mineclass = {
-  Mine_Mineral: '#648587',
-  Mine_Coal: '#494C80',
-  Mine_Hazards: '#756E5D',
-  Mine_Waste: '#656F6F',
-  Mine_Structures: '#A09A89',
-  Mine_Water: '#ACD5D8',
-  Mine_Unclassified: '#C29C99',
-};
-// Name for legend, responding to Geojson//
-const Minelabels = {
-  Mineral: 'Mine_Mineral',
-  Coal: 'Mine_Coal',
-  Hazards: 'Mine_Hazards',
-  Waste: 'Mine_Waste',
-  Structures: 'Mine_Structures',
-  Water: 'Mine_Water',
-  Unclassified: 'Mine_Unclassified',
-
-
+const Militaryclass = {
+  Military_Weaponry: '#772F1A',
+  Military_Aviation: '#F58549',
+  'Military_Waste Management': '#EEC170',
+  Military_WM: '#EEC170',
+  Military_Facilities: '#585123',
 };
 
-const Mineral_button = document.querySelector('.Mine_Mineral');
-const Coal_button = document.querySelector('.Mine_Coal');
-const Hazard_button = document.querySelector('.Mine_Hazards');
-const Waste_button = document.querySelector('.Mine_Waste');
-const Structure_button = document.querySelector('.Mine_Structures');
-const Water_button = document.querySelector('.Mine_Water');
-const Unclassified_button = document.querySelector('.Mine_Unclassified');
+const Militarylabels = {
+  Weaponry: 'Military_Weaponry',
+  Aviation: 'Military_Aviation',
+  'Waste Management': 'Military_WM',
+  Facilities: 'Military_Facilities',
+};
 
-// Legends on map//
+const Weaponry_button = document.querySelector('.Military_Weaponry');
+const Aviation_button = document.querySelector('.Military_Aviation');
+const Waste_Management_button = document.querySelector('.Military_Waste_Management');
+const Facilities_button = document.querySelector('.Military_Facilities');
+
+
 let legend = L.control({ position: 'bottomright' });
 legend.onAdd = function (map2) {
   const div = L.DomUtil.create('div', 'info legend');
-  const categories = Object.keys(Minelabels);
+  const categories = Object.keys(Militarylabels);
 
 
   // loop through the categories (legend)
   for (let i = 0; i < categories.length; i++) {
     const category = categories[i];
-    const dataCategory = Minelabels[category];
-    const color = Mineclass[dataCategory];
+    const dataCategory = Militarylabels[category];
+    const color = Militaryclass[dataCategory];
     div.innerHTML += `
       <span style="background: ${color}"></span>
       ${category}<br>
@@ -174,30 +157,10 @@ let jsonLayerGroup = L.layerGroup().addTo(map);
 let subcategoryShow = (features) => {
   jsonLayerGroup.clearLayers();
   for (const feature of features) {
-    // origninal dotmarkers without radius responding to acrerage
-    /* const layer = L.geoJSON(feature, {
-      pointToLayer: function (feature, latlng) {
-        const classification = feature.properties['Classifica'];
-        const classColor = Militaryclass[classification];
-
-        var geojsonMarkerOptions = {
-          radius: 4,
-          fillColor: classColor,
-          color: "#000",
-          weight: 1,
-          opacity: 1,
-          fillOpacity: 1
-        };
-        return L.circleMarker(latlng, geojsonMarkerOptions);
-      }
-    })
-      .bindTooltip(feature.properties['Site_Name'])
-      .addTo(map); */
-
     const jsonLayer = L.geoJSON(feature, {
       pointToLayer(feature2, latlng) {
-        const classification = feature.properties.Classification;
-        const classColor = Mineclass[classification];
+        const classification = feature.properties.Classifica;
+        const classColor = Militaryclass[classification];
 
         let geojsonMarkerOptions = {
           radius: acreageRange(feature.properties.Acres),
@@ -218,8 +181,6 @@ let subcategoryShow = (features) => {
         const baseRadius = acreageRange(marker.feature.properties.Acres);
         if (map.getZoom() < 4.5) {
           marker.setRadius(baseRadius / 2);
-          /*       } else if (map.getZoom() > 10) {
-          marker.setRadius(6); */
         } else {
           marker.setRadius(baseRadius);
         }
@@ -227,28 +188,26 @@ let subcategoryShow = (features) => {
     });
 
     jsonLayer.addEventListener('click', () => {
-      window.location = `MineBrownfields/${feature.properties.Site_ID}.html`;
+      window.location = `MilitaryBrownfields/${feature.properties.Site_ID}.html`;
     });
-
-    // Count "LC_Type" from Geojson to landcover chart
     const lctype = feature.properties.LC_Type;
+
     lcCount[lctype] += 1;
 
     // Count "Program_General" from Geojson to program chart
-    const programtype = feature.properties.Program_General;
+    const programtype = feature.properties.Program_Ge;
     programCount[programtype] += 1;
 
     // Count "Classification" from Geojson to program chart
-    const subtype = feature.properties.Classification;
+    const subtype = feature.properties.Classifica;
     subcatCount[subtype] += 1;
 
     // Count "Region" from Geojson to program chart
     const regiontype = feature.properties.NA_L1NAME;
     ecoregionCount[regiontype] += 1;
   }
-
   let filteredSubgroup = () => {
-    const selectedSubgroup = Minelabels.value;
+    const selectedSubgroup = Militarylabels.value;
   };
 };
 
@@ -256,15 +215,14 @@ let legendRadius = L.control({ position: 'bottomleft' });
 legendRadius.onAdd = function (map3) {
   const div = L.DomUtil.create('div', 'info legend');
   // div.innerHTML = "I'm here!"
-  const categories = Object.keys(Minelabels);
-
+  const categories = Object.keys(Militarylabels);
   return div;
 };
 legendRadius.addTo(map);
 
 // Fetch geojson file
 let jsonData;
-fetch('Mine.geojson')
+fetch('Military.geojson')
   .then(resp => resp.json())
   .then(data => {
     jsonData = data;
@@ -281,23 +239,30 @@ fetch('Mine.geojson')
   });
 // Dotmarker radius range
 let acreageRange = (acreage) => {
-  if (acreage < 2.7) {
+  if (acreage < 18) {
     return 6;
   }
-  if (acreage < 6.2) {
-    return 8;
-  }
-  if (acreage < 17.3) {
+  if (acreage < 100) {
     return 10;
   }
-  if (acreage < 300) {
-    return 12;
-  }
-  if (acreage > 300) {
+  if (acreage < 500) {
     return 14;
+  }
+  if (acreage < 1000) {
+    return 16;
+  }
+  if (acreage < 3330) {
+    return 18;
+  }
+  if (acreage < 12000) {
+    return 20;
+  }
+  if (acreage > 12000) {
+    return 22;
   }
   return 6;
 };
+
 // Define features in 4 Charts
 
 let updateChart1 = () => {
@@ -309,26 +274,23 @@ let updateChart1 = () => {
     margin: {
       t: 40, b: 40, l: 40, r: 40,
     },
-    width: 340,
-    height: 340,
+    width: 400,
+    height: 400,
     automargin: true,
     showlegend: false,
   };
   let barColors = [
-    '#648587',
-    '#494C80',
-    '#756E5D',
-    '#656F6F',
-    '#A09A89',
-    '#ACD5D8',
-    'C29C99',
+    '#772F1A',
+    '#F58549',
+    '#EEC170',
+    '#585123',
+
   ];
   let data = [{
     labels: xArray,
     values: yArray,
     hole: 0.4,
     type: 'pie',
-    rotation: 45,
     textinfo: 'label+percent',
     textposition: 'outside',
     automargin: true,
@@ -346,8 +308,8 @@ let updateChart2 = () => {
     margin: {
       t: 40, b: 40, l: 40, r: 40,
     },
-    width: 280,
-    height: 280,
+    width: 290,
+    height: 290,
     automargin: true,
     showlegend: false,
     sort: false,
@@ -357,15 +319,17 @@ let updateChart2 = () => {
     '#CF5178',
     '#A9657A',
     '#CC2B5E',
+    '#74B89C',
     '#83787B',
-    '#83787B',
-    '#83787B',
+    '#E44383',
     '#75374A',
+    '#2C5343',
     '#5D8B7C',
     '#923351',
     '#663947',
     '#369E7D',
     '#573A43',
+    '#79D6A5',
   ];
 
   let data = [{
@@ -394,8 +358,8 @@ let updateChart4 = () => {
     margin: {
       t: 40, b: 40, l: 40, r: 40,
     },
-    width: 345,
-    height: 345,
+    width: 320,
+    height: 320,
     automargin: true,
     showlegend: false,
   };
@@ -403,7 +367,9 @@ let updateChart4 = () => {
   let barColors = [
     '#0E4547',
     '#0A888F',
+    '#507173',
     '#C5FAFC',
+    '#0A888F',
   ];
 
   let data = [{
@@ -430,27 +396,20 @@ let updateChart3 = () => {
     margin: {
       t: 40, b: 40, l: 40, r: 40,
     },
-    width: 288,
-    height: 288,
+    width: 280,
+    height: 280,
     automargin: true,
     showlegend: false,
   };
 
   let barColors = [
-
-    // "#CACEED",
     '#F2A65A', // ORANGE
     '#CFBE3E', // OLIVE GREEN
     '#ACAA9F', //
+    '#858587',
     '#D3D0B7', // GREY
     '#FAF5CF', // WHITE
     '#756a1f', // DARK OLIVE GREEN
-    // "#ACAA9F",
-    // "#858587",
-    // "#5D5F6E",
-    // "#EEC170",
-    // "#6D694C",
-    // "#7D7329"
   ];
 
   let data = [{
@@ -475,22 +434,17 @@ let readMoreButton = () => {
     HiddenMoreDescription.classList.toggle('hidden');
   });
 };
-
-
 readMoreButton();
 
 let filterJson = (classification) => {
-  const subMarker = jsonData.features.filter(f => f.properties.Classification === classification);
+  const subMarker = jsonData.features.filter(f => f.properties.Classifica === classification);
   subcategoryShow(subMarker);
 };
-// button legend to filter subcategories from Geojson
-Mineral_button.addEventListener('click', () => { filterJson('Mine_Mineral'); });
-Coal_button.addEventListener('click', () => { filterJson('Mine_Coal'); });
-Hazard_button.addEventListener('click', () => { filterJson('Mine_Hazards'); });
-Waste_button.addEventListener('click', () => { filterJson('Mine_Waste'); });
-Structure_button.addEventListener('click', () => { filterJson('Mine_Structures'); });
-Water_button.addEventListener('click', () => { filterJson('Mine_Water'); });
-Unclassified_button.addEventListener('click', () => { filterJson('Mine_Unclassified'); });
+
+Weaponry_button.addEventListener('click', () => { filterJson('Military_Weaponry'); });
+Aviation_button.addEventListener('click', () => { filterJson('Military_Aviation'); });
+Waste_Management_button.addEventListener('click', () => { filterJson('Military_WM'); });
+Facilities_button.addEventListener('click', () => { filterJson('Military_Facilities'); });
 
 // Quartile 1
 setTimeout(() => {
@@ -505,7 +459,7 @@ setTimeout(() => {
   brownfieldGridEl.appendChild(refreshButton);
 
   const scaleBar = document.createElement('h3');
-  scaleBar.innerHTML = 'Areas < 2.7 acres, Scale: width of image = 600 feet';
+  scaleBar.innerHTML = 'Areas < 20 acres, Scale: width of image = 600 feet';
   brownfieldGridEl.appendChild(scaleBar);
 
   const imageRow = document.createElement('div');
@@ -513,7 +467,7 @@ setTimeout(() => {
   const refreshImageRow = function () {
     imageRow.innerHTML = '';
     for (let i = 0; i < 6; i++) {
-      const quartileFilter = jsonData.features.filter(f => f.properties.Acres < 2.7);
+      const quartileFilter = jsonData.features.filter(f => f.properties.Acres < 20);
       const index = Math.floor(Math.random() * quartileFilter.length);
       const [lng, lat] = quartileFilter[index].geometry.coordinates;
 
@@ -538,7 +492,7 @@ setTimeout(() => {
   brownfieldGridEl.appendChild(refreshButton);
 
   const scaleBar = document.createElement('h3');
-  scaleBar.innerHTML = 'Areas < 6.2 acres, Scale: width of image = 600feet';
+  scaleBar.innerHTML = 'Areas < 560 acres, Scale: width of image = 0.45 mile';
   brownfieldGridEl.appendChild(scaleBar);
 
   const imageRow = document.createElement('div');
@@ -546,12 +500,12 @@ setTimeout(() => {
   const refreshImageRow = function () {
     imageRow.innerHTML = '';
     for (let i = 0; i < 6; i++) {
-      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 2.7 && f.properties.Acres < 6.2);
+      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 20 && f.properties.Acres < 500);
       const index = Math.floor(Math.random() * quartileFilter.length);
       const [lng, lat] = quartileFilter[index].geometry.coordinates;
 
       const imgEl = document.createElement('img');
-      imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},16,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
+      imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},14,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
       imageRow.appendChild(imgEl);
     }
   };
@@ -571,7 +525,7 @@ setTimeout(() => {
   brownfieldGridEl.appendChild(refreshButton);
 
   const scaleBar = document.createElement('h3');
-  scaleBar.innerHTML = 'Areas < 11 acres, Scale: width of image = 600 ft';
+  scaleBar.innerHTML = 'Areas < 3652 acres, Scale: width of image = 1.8 mile';
   brownfieldGridEl.appendChild(scaleBar);
 
   const imageRow = document.createElement('div');
@@ -579,12 +533,12 @@ setTimeout(() => {
   const refreshImageRow = function () {
     imageRow.innerHTML = '';
     for (let i = 0; i < 6; i++) {
-      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 6.2 && f.properties.Acres < 17.3);
+      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 500 && f.properties.Acres < 3330);
       const index = Math.floor(Math.random() * quartileFilter.length);
       const [lng, lat] = quartileFilter[index].geometry.coordinates;
 
       const imgEl = document.createElement('img');
-      imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},16,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
+      imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},12,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
       imageRow.appendChild(imgEl);
     }
   };
@@ -605,7 +559,7 @@ setTimeout(() => {
   brownfieldGridEl.appendChild(refreshButton);
 
   const scaleBar = document.createElement('h3');
-  scaleBar.innerHTML = 'Areas < 278 acres, Scale: width of image = 0.45 mile';
+  scaleBar.innerHTML = 'Areas < 2669226 acres, Scale: width of image = 7.2 mile';
   brownfieldGridEl.appendChild(scaleBar);
 
   const imageRow = document.createElement('div');
@@ -613,17 +567,15 @@ setTimeout(() => {
   const refreshImageRow = function () {
     imageRow.innerHTML = '';
     for (let i = 0; i < 6; i++) {
-      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 17.3 && f.properties.Acres < 300);
+      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 3330);
       const index = Math.floor(Math.random() * quartileFilter.length);
       const [lng, lat] = quartileFilter[index].geometry.coordinates;
 
       const imgEl = document.createElement('img');
-      imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},14,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
+      imgEl.setAttribute('src', `https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/${lng},${lat},10,0.00,0.00/200x200@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA`);
       imageRow.appendChild(imgEl);
     }
   };
   refreshImageRow();
   refreshButton.addEventListener('click', refreshImageRow, false);
 }, 1000);
-
-// [...new Set(jsonData.features.map(f => f.properties['Classifica']))]

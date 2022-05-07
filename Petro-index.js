@@ -25,7 +25,7 @@ let map = L.map('map', {
 
 /* old basemap
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 }).addTo(map);
 */
 
@@ -119,7 +119,7 @@ const Processing_Transport_button = document.querySelector('.Processing_Transpor
 
 // Legends on map//
 let legend = L.control({ position: 'bottomright' });
-legend.onAdd = function (map) {
+legend.onAdd = function (map2) {
   const div = L.DomUtil.create('div', 'info legend');
   const categories = Object.keys(Petrolabels);
 
@@ -144,8 +144,7 @@ function myFunction() {
 }
 
 function filterFunction() {
-  let input; let filter; let ul; let li; let a; let
-    i;
+  let input; let filter; let ul; let li; let a; let i; let div; let txtValue;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
   div = document.getElementById('myDropdown');
@@ -186,7 +185,7 @@ let subcategoryShow = (features) => {
       .addTo(map); */
 
     const jsonLayer = L.geoJSON(feature, {
-      pointToLayer(feature, latlng) {
+      pointToLayer(feature2, latlng) {
         const classification = feature.properties.Classification;
         const classColor = Petroclass[classification];
 
@@ -223,19 +222,19 @@ let subcategoryShow = (features) => {
 
     // Count "LC_Type" from Geojson to landcover chart
     const lctype = feature.properties.LC_Type;
-    lcCount[lctype] = lcCount[lctype] + 1;
+    lcCount[lctype] += 1;
 
     // Count "Program_General" from Geojson to program chart
     const programtype = feature.properties.Program_General;
-    programCount[programtype] = programCount[programtype] + 1;
+    programCount[programtype] += 1;
 
     // Count "Classification" from Geojson to program chart
     const subtype = feature.properties.Classification;
-    subcatCount[subtype] = subcatCount[subtype] + 1;
+    subcatCount[subtype] += 1;
 
     // Count "Region" from Geojson to program chart
     const regiontype = feature.properties.NA_L1NAME;
-    ecoregionCount[regiontype] = ecoregionCount[regiontype] + 1;
+    ecoregionCount[regiontype] += 1;
   }
 
   let filteredSubgroup = () => {
@@ -244,7 +243,7 @@ let subcategoryShow = (features) => {
 };
 
 let legendRadius = L.control({ position: 'bottomleft' });
-legendRadius.onAdd = function (map) {
+legendRadius.onAdd = function (map3) {
   const div = L.DomUtil.create('div', 'info legend');
   // div.innerHTML = "I'm here!"
   const categories = Object.keys(Petrolabels);
@@ -268,7 +267,6 @@ legendRadius.addTo(map);
 
 // Fetch geojson file
 let jsonData;
-let p1;
 fetch('Petrochemical5.geojson')
   .then(resp => resp.json())
   .then(data => {
@@ -301,6 +299,7 @@ let acreageRange = (acreage) => {
   if (acreage > 278) {
     return 14;
   }
+  return 6;
 };
 // Define features in 4 Charts
 
@@ -539,7 +538,7 @@ setTimeout(() => {
   const refreshImageRow = function () {
     imageRow.innerHTML = '';
     for (let i = 0; i < 6; i++) {
-      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 1.6 | f.properties.Acres < 3.5);
+      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 1.6 && f.properties.Acres < 3.5);
       const index = Math.floor(Math.random() * quartileFilter.length);
       const [lng, lat] = quartileFilter[index].geometry.coordinates;
 
@@ -572,7 +571,7 @@ setTimeout(() => {
   const refreshImageRow = function () {
     imageRow.innerHTML = '';
     for (let i = 0; i < 6; i++) {
-      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 3.5 | f.properties.Acres < 11);
+      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 3.5 && f.properties.Acres < 11);
       const index = Math.floor(Math.random() * quartileFilter.length);
       const [lng, lat] = quartileFilter[index].geometry.coordinates;
 
@@ -606,7 +605,7 @@ setTimeout(() => {
   const refreshImageRow = function () {
     imageRow.innerHTML = '';
     for (let i = 0; i < 6; i++) {
-      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 11 | f.properties.Acres < 278);
+      const quartileFilter = jsonData.features.filter(f => f.properties.Acres > 11 && f.properties.Acres < 278);
       const index = Math.floor(Math.random() * quartileFilter.length);
       const [lng, lat] = quartileFilter[index].geometry.coordinates;
 
