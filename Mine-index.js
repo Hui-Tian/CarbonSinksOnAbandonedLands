@@ -1,8 +1,6 @@
 /* ==========
 
-Introduction: In this part you will modify a few GeoJSON files in order to add
-data to your map. Follow the instructions in the steps below. You can see your
-progress visually by running a local web server in the week's repository folder:
+You can see your progress visually by running a local web server in the week's repository folder:
 
   npx http-server --port 8000
 
@@ -196,11 +194,11 @@ let subcategoryShow = (features) => {
 
     const jsonLayer = L.geoJSON(feature, {
       pointToLayer(feature2, latlng) {
-        const classification = feature.properties.Classification;
+        const classification = feature2.properties.Classification;
         const classColor = Mineclass[classification];
 
         let geojsonMarkerOptions = {
-          radius: acreageRange(feature.properties.Acres),
+          radius: acreageRange(feature2.properties.Acres),
           fillColor: classColor,
           color: '#000',
           weight: 0.2,
@@ -255,7 +253,6 @@ let subcategoryShow = (features) => {
 let legendRadius = L.control({ position: 'bottomleft' });
 legendRadius.onAdd = function (map3) {
   const div = L.DomUtil.create('div', 'info legend');
-  // div.innerHTML = "I'm here!"
   const categories = Object.keys(Minelabels);
 
   return div;
