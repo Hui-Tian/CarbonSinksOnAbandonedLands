@@ -1,6 +1,0 @@
-*.pyc
-poetry.lock
-node_modules/
-
-data/**/*.txt
-data/**/*.doc
