@@ -350,9 +350,9 @@ let updateChart2 = () => {
   let layout = {
     title: 'Landcover',
     margin: {
-      t: 50, b: 40, l: 40, r: 0,
+      t: 50, b: 40, l: 20, r: 0,
     },
-    width: 275,
+    width: 270,
     height: 275,
     showlegend: false,
     sort: false,

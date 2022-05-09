@@ -436,9 +436,9 @@ let updateChart3 = () => {
   let layout = {
     title: 'Ecoregion',
     margin: {
-      t: 40, b: 40, l: 70, r: 0,
+      t: 40, b: 40, l: 70, r: 10,
     },
-    width: 310,
+    width: 305,
     height: 290,
     automargin: true,
     showlegend: false,
