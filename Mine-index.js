@@ -59,13 +59,13 @@ const lcCount = {
 };
 // Define features in Classification Charts//
 const subcatCount = {
-  Mine_Mineral: 0,
-  Mine_Coal: 0,
-  Mine_Hazards: 0,
-  Mine_Waste: 0,
-  Mine_Structures: 0,
-  Mine_Water: 0,
-  Mine_Unclassified: 0,
+  Mineral: 0,
+  Coal: 0,
+  Hazards: 0,
+  Waste: 0,
+  Structures: 0,
+  Water: 0,
+  Unclassified: 0,
 };
 
 // Define features in Program_General Charts//
@@ -116,7 +116,17 @@ const Minelabels = {
 
 
 };
-
+// Name for subcategory chart (opposite way compared to Map dot legends)
+const subtypeChartLabels = {
+  Mine_Mineral: 'Mineral',
+  Mine_Coal: 'Coal',
+  Mine_Hazards: 'Hazards',
+  Mine_Waste: 'Waste',
+  Mine_Structures: 'Structures',
+  Mine_Water: 'Water',
+  Mine_Unclassified: 'Unclassified',
+};
+// Filter Button
 const Mineral_button = document.querySelector('.Mine_Mineral');
 const Coal_button = document.querySelector('.Mine_Coal');
 const Hazard_button = document.querySelector('.Mine_Hazards');
@@ -238,7 +248,8 @@ let subcategoryShow = (features) => {
 
     // Count "Classification" from Geojson to program chart
     const subtype = feature.properties.Classification;
-    subcatCount[subtype] += 1;
+    const stChartLabel = subtypeChartLabels[subtype];
+    subcatCount[stChartLabel] += 1;
 
     // Count "Region" from Geojson to program chart
     const regiontype = feature.properties.NA_L1NAME;
@@ -304,10 +315,10 @@ let updateChart1 = () => {
   let layout = {
     title: 'Subcategory',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 60, b: 30, l: 40, r: 40,
     },
-    width: 340,
-    height: 340,
+    width: 300,
+    height: 320,
     automargin: true,
     showlegend: false,
   };
@@ -336,14 +347,14 @@ let updateChart1 = () => {
 };
 let updateChart2 = () => {
   let xArray = Object.keys(lcCount);
-  let yArray = Object.values(lcCount); // .map(y => y + 1);
+  let yArray = Object.values(lcCount);
 
   let layout = {
     title: 'Landcover',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 50, b: 40, l: 40, r: 0,
     },
-    width: 280,
+    width: 290,
     height: 280,
     automargin: true,
     showlegend: false,
@@ -355,8 +366,8 @@ let updateChart2 = () => {
     '#A9657A',
     '#CC2B5E',
     '#83787B',
-    '#83787B',
-    '#83787B',
+    '#d4c9cc',
+    '#cc97a5',
     '#75374A',
     '#5D8B7C',
     '#923351',
@@ -389,10 +400,10 @@ let updateChart4 = () => {
   let layout = {
     title: 'Program',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 40, b: 40, l: 0, r: 40,
     },
-    width: 345,
-    height: 345,
+    width: 350,
+    height: 350,
     automargin: true,
     showlegend: false,
   };
@@ -408,7 +419,7 @@ let updateChart4 = () => {
     values: yArray,
     hole: 0.4,
     type: 'pie',
-    rotation: 120,
+    rotation: -60,
     textinfo: 'label+percent',
     textposition: 'outside',
     automargin: true,
@@ -425,10 +436,10 @@ let updateChart3 = () => {
   let layout = {
     title: 'Ecoregion',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 40, b: 40, l: 70, r: 0,
     },
-    width: 288,
-    height: 288,
+    width: 310,
+    height: 290,
     automargin: true,
     showlegend: false,
   };

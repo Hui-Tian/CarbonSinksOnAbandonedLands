@@ -58,11 +58,11 @@ const lcCount = {
 };
 // Define features in Claasification Charts//
 const subcatCount = {
-  PC_Rail: 0,
-  PC_Auto: 0,
-  PC_GasStations: 0,
-  PC_Gasification: 0,
-  PC_ProcTrans: 0,
+  Railways: 0,
+  Automobiles: 0,
+  'Gas Stations': 0,
+  Gasification: 0,
+  'Processing+Transport': 0,
 };
 
 // Define features in Program_General Charts//
@@ -99,13 +99,21 @@ const Petroclass = {
   PC_Gasification: '#8CBA80',
   PC_ProcTrans: '#CACF85',
 };
-// Name for legend, responding to Geojson//
+// Name for Map dot legend, responding to Geojson//
 const Petrolabels = {
   Railways: 'PC_Rail',
   Automobiles: 'PC_Auto',
   'Gas Stations': 'PC_GasStations',
   Gasification: 'PC_Gasification',
   'Processing + Transport': 'PC_ProcTrans',
+};
+// Name for subcategory chart (opposite way compared to Map dot legends)
+const subtypeChartLabels = {
+  PC_Rail: 'Railways',
+  PC_Auto: 'Automobiles',
+  PC_GasStations: 'Gas Stations',
+  PC_Gasification: 'Gasification',
+  PC_ProcTrans: 'Processing+Transport',
 };
 
 const Railways_button = document.querySelector('.Railways');
@@ -227,7 +235,8 @@ let subcategoryShow = (features) => {
 
     // Count "Classification" from Geojson to program chart
     const subtype = feature.properties.Classification;
-    subcatCount[subtype] += 1;
+    const stChartLabel = subtypeChartLabels[subtype];
+    subcatCount[stChartLabel] += 1;
 
     // Count "Region" from Geojson to program chart
     const regiontype = feature.properties.NA_L1NAME;
@@ -307,10 +316,10 @@ let updateChart1 = () => {
   let layout = {
     title: 'Subcategory',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 40, b: 40, l: 20, r: 40,
     },
-    width: 345,
-    height: 345,
+    width: 330,
+    height: 330,
     showlegend: false,
   };
   let barColors = [
@@ -327,6 +336,7 @@ let updateChart1 = () => {
     type: 'pie',
     textinfo: 'label+percent',
     textposition: 'outside',
+    rotation: 50,
     automargin: true,
     marker: { colors: barColors },
   }];
@@ -335,15 +345,15 @@ let updateChart1 = () => {
 };
 let updateChart2 = () => {
   let xArray = Object.keys(lcCount);
-  let yArray = Object.values(lcCount); // .map(y => y + 1);
+  let yArray = Object.values(lcCount);
 
   let layout = {
     title: 'Landcover',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 50, b: 40, l: 40, r: 0,
     },
-    width: 270,
-    height: 270,
+    width: 275,
+    height: 275,
     showlegend: false,
     sort: false,
   };
@@ -423,10 +433,10 @@ let updateChart3 = () => {
   let layout = {
     title: 'Ecoregion',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 40, b: 40, l: 60, r: 40,
     },
-    width: 270,
-    height: 270,
+    width: 280,
+    height: 280,
     showlegend: false,
   };
 

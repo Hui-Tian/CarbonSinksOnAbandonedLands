@@ -59,10 +59,10 @@ const lcCount = {
 };
 // Define features in Classification Charts//
 const subcatCount = {
-  Military_Weaponry: 0,
-  Military_Aviation: 0,
-  Military_WM: 0,
-  Military_Facilities: 0,
+  Weaponry: 0,
+  Aviation: 0,
+  "Waste Management": 0,
+  Facilities: 0,
 };
 
 // Define features in Program_General Charts//
@@ -103,6 +103,13 @@ const Militarylabels = {
   Aviation: 'Military_Aviation',
   'Waste Management': 'Military_WM',
   Facilities: 'Military_Facilities',
+};
+
+const subtypeChartLabels = {
+  Military_Weaponry: 'Weaponry',
+  Military_Aviation: 'Aviation',
+  Military_WM: 'Waste Management',
+  Military_Facilities: 'Facilities',
 };
 
 const Weaponry_button = document.querySelector('.Military_Weaponry');
@@ -200,7 +207,8 @@ let subcategoryShow = (features) => {
 
     // Count "Classification" from Geojson to program chart
     const subtype = feature.properties.Classifica;
-    subcatCount[subtype] += 1;
+    const stChartLabel = subtypeChartLabels[subtype];
+    subcatCount[stChartLabel] += 1;
 
     // Count "Region" from Geojson to program chart
     const regiontype = feature.properties.NA_L1NAME;
@@ -271,11 +279,10 @@ let updateChart1 = () => {
   let layout = {
     title: 'Subcategory',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 40, b: 40, l: 50, r: 40,
     },
-    width: 400,
-    height: 400,
-    automargin: true,
+    width: 330,
+    height: 350,
     showlegend: false,
   };
   let barColors = [
@@ -309,7 +316,6 @@ let updateChart2 = () => {
     },
     width: 290,
     height: 290,
-    automargin: true,
     showlegend: false,
     sort: false,
   };
@@ -357,9 +363,8 @@ let updateChart4 = () => {
     margin: {
       t: 40, b: 40, l: 40, r: 40,
     },
-    width: 320,
+    width: 325,
     height: 320,
-    automargin: true,
     showlegend: false,
   };
 
@@ -393,11 +398,10 @@ let updateChart3 = () => {
   let layout = {
     title: 'Ecoregion',
     margin: {
-      t: 40, b: 40, l: 40, r: 40,
+      t: 20, b: 40, l: 65, r: 40,
     },
-    width: 280,
-    height: 280,
-    automargin: true,
+    width: 295,
+    height: 295,
     showlegend: false,
   };
 
