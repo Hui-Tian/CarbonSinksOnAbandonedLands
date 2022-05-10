@@ -19,7 +19,7 @@ RE-Powering America’s Land is an EPA initiative that encourages renewable ener
 
 https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true
 
-![WebPic1](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/img/WebPic1.jpg)
+![WebPic1](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/img/WebPic1.jpg)
 
 ![arch.diagram](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/img/WebPic2.jpg)
 
