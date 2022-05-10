@@ -9,19 +9,19 @@ RE-Powering America’s Land is an EPA initiative that encourages renewable ener
 
 > 1. Main Page <br>
 ![sample1](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic1.jpg)
-<img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic1.jpg” width=75%>
 
-> 2. Petrochemical Category
-<img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic2.jpg” width=75%>
+> 2. Petrochemical Category<br>
+![sample2](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic2.jpg)
 
-> 2.2 Petrochemical Charts and Axon Diagrams
-<img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic3.jpg” width=75%>
+> 2.2 Petrochemical Charts and Axon Diagrams<br>
+![sample3](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic3.jpg)
 
-> 2.3 Petrochemical Brownfields in Various Acerage Ranges
-<img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic4.jpg” width=75%>
+> 2.3 Petrochemical Brownfields in Various Acerage Ranges<br>
+![sample4](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic4.jpg)
 
-> 3. Military Category
-<img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic5.jpg” width=75%>
+> 3. Military Category<br>
+![sample5](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic5.jpg)
 
-> 4. Mine Category
-<img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic6.jpg” width=75%>
+> 4. Mine Category<br>
+![sample6](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic6.jpg)
+
