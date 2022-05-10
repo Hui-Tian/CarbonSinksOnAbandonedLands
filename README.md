@@ -1,7 +1,7 @@
 # Carbon Sinks On Abandoned Lands
 ## Mapping Tool to Explore Brownfields in the U.S.
-Website Design and Development : Hui Tian <br>
-Research Team: Nicholas Pevzner, Oliver Atwood, Hui Tian, Yuehui Gong
+**Website Design and Development**: Hui Tian <br>
+**Research Team**: Nicholas Pevzner, Oliver Atwood, Hui Tian, Yuehui Gong
 
 Project URL: https://hui-tian.github.io/CarbonSinksOnAbandonedLands/
 
