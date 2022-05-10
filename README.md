@@ -22,7 +22,7 @@ style=“margin-right: 10px;”
 <img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/img/WebPic6.jpg”>
 
 
-![arch.diagram](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/img/WebPic1.jpg)
+![WebPic1](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/img/WebPic1.jpg)
 
 ![arch.diagram](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/img/WebPic2.jpg)
 
