@@ -7,8 +7,8 @@ Project URL: https://hui-tian.github.io/CarbonSinksOnAbandonedLands/
 
 RE-Powering America’s Land is an EPA initiative that encourages renewable energy development on current and formerly contaminated lands, landfills, and mine sites when such development is aligned with the community’s vision for the site. Based on datasets provided by EPA, we created a mapping tool to show spatial distribution of more than 75,000 sites that have been evaluated for renewable energy potential, describe their typologies and characters, explored main contaminents and remediation strategies, and created a Landscape Architecture Strategy Toolkit.
 
-> 1. Main Page
-![sample1](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic1.jpg width=75%)
+> 1. Main Page <br>
+![sample1](https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic1.jpg)
 <img src=“https://github.com/Hui-Tian/CarbonSinksOnAbandonedLands/blob/main/img/WebPic1.jpg” width=75%>
 
 > 2. Petrochemical Category
