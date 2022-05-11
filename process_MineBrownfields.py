@@ -32,7 +32,7 @@ for feature in data['features']:
                             <dt>Landcover Type</dt>
                             <dd>{feature['properties']['LC_Type']}</dd>
                             <dt>RE Powering Profile</dt>
-                            <dd><a href="url">{feature['properties']['RE_Powering_Profile']}</a></dd>
+                            <dd><a href="{feature['properties']['RE_Powering_Profile']}">{feature['properties']['RE_Powering_Profile']}</a></dd>
                             
 
 

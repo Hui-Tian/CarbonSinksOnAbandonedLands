@@ -6,9 +6,9 @@ You can see your progress visually by running a local web server in the week's r
 
 And navigating to http://localhost:8000/Mine-index.html
 
-run python for process_brownfields.py in anaconda
+run python to generate html fiels for each points in anaconda
 
-python process_brownfields.py
+python process_MineBrownfields.py
 
 ========== *//// ////
 
