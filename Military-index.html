@@ -5,16 +5,29 @@
     <!-- Stylesheet for Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
 
-
+    <!-- Lightbox2 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css" integrity="sha512-Woz+DqWYJ51bpVk5Fv0yES/edIMXjj3Ynda+KWTIkGoynAMHrqTcDUQltbipuiaD5ymEo9520lyoVOo9jCQOCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Exercise stylesheet -->
     <link href="Military-index.css" rel="stylesheet">
+    <!-- Level Up Icon-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
   </head>
+  <!-- Side Navigation Bar -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <body>
     <div id="header">
       Military Brownfields
     </div>
-    <div id="central">
+    <!-- Side Navigation Bar List -->
+    <div class="sidenav">
 
+      <a href="index.html">PROJECT OVERVIEW</a>
+      <a href="#category">BROWNFIELD CATEGORIES</a>
+      <a href="#link">BROWNFIELD TOOLKIT</a>
+      <a href="#about">ABOUT PROJECT</a>
+    </div>
+
+    <div id="central">
     <div class="top-section">
       
       <div class="left-panel">
@@ -26,110 +39,234 @@
             <a class="Military_Aviation"><span class="color-dot"></span> Aviation</a>
             <a class="Military_Waste_Management"><span class="color-dot"></span> Waste_Management</a>
             <a class="Military_Facilities"><span class="color-dot"></span> Facilities</a>
+            <a href="Military-index.html"><i class="fas fa-chevron-left" style='margin-top: 30px'></i> Back</a>        
+          </div>
+
+          <div class="quartile-legend">
+
+            <div class="quartile-legend-row">
+              <span class="Q7"></span>
+              <span>< 2669,225 acres</span>
+            </div>        
+  
+            <div class="quartile-legend-row">
+              <span class="Q6"></span>
+              <span>< 12,000 acres<br></span>
+            </div>        
             
+            <div class="quartile-legend-row">
+              <span class="Q5"></span>
+              <span>< 3,330 acres<br></span>
+            </div>        
+            
+            <div class="quartile-legend-row">
+              <span class="Q4"></span>
+              <span>< 1,000 acres<br></span>
+            </div>        
+            
+            <div class="quartile-legend-row">
+              <span class="Q3"></span>
+              <span>< 500 acres<br></span>
+            </div>        
+            
+            <div class="quartile-legend-row">
+              <span class="Q2"></span>
+              <span>< 100 acres<br></span>
+            </div>
+  
+            <div class="quartile-legend-row">
+              <span class="Q1"></span>
+              <span>< 18 acres<br></span>
+            </div>
+
           </div>
         </div>
-
-        <div class="quartile-legend">
-          <div class="quartile-legend-row"></div>        
-          <span class="Q7"></span>
-          < 2669,225 acres<br>
-
-          <span class="Q6"></span>
-          < 12,000 acres<br>
-        
-          <span class="Q5"></span>
-          < 3,330 acres<br>
-        
-          <span class="Q4"></span>
-          < 1,000 acres<br>
-        
-          <span class="Q3"></span>
-          < 500 acres<br>
-
-          <span class="Q2"></span>
-          < 100 acres<br>
-        
-          <span class="Q1"></span>
-          < 18 acres<br>
-        </div>
       </div>
-
       <div id="map"></div>
     </div>
-    <div class="middle-section">
-      <div id="content-section">
-        <div id="title">
-          Description: 
-        </div>
-        <div id="content">
-        <P>
-          This group of sites represent a wide range of typologies associated with former and current military use. Many of these sites are explicitly owned by branches of the US military, presenting in some ways an obstacle to their repurposing and in other ways a great latent potential for the mobilization of human and capital resources necessary for large-scale landscape transformation.</p> 
-        <p><strong>Weaponry:</strong>This site classification includes all sites with the potential presence of weapons or ammunition, from depots and sites of manufacture to bombing targets and firing ranges. Within this subclass, there is a range of potential danger involved in access to these sites. In some cases, specialized teams and equipment will be necessary to make sites safe for access or intervention.</p>   
-        <p><strong>Aviation:</strong> These are military airports or areas otherwise related to military aviation. With the exception of a small number of landfills and other disposal sites, the majority of the sites in this subcategory are operational military airfields, a typology with very strict security constraints. It can likely be assumed that for many of these sites, the contaminants present are jet fuel or related components or by-products thereof. Might be possible to group these sites with other aviation sites from other categories, possibly including aerospace sites.</p> 
-        <p><strong>Waste Management:</strong> Small number of landfills and dumps affiliated with the military. It is unclear whether this affiliation has an impact on the nature of the waste interred at these sites.</p> 
-        <p class="more-description hidden">.......</p>
 
-        <button class="toggle-more-description">Show more...</button>
-        </div>
-      </div>
-      <div id="chart-section">
-        <div id="chart-title">
-          Charts for Analysis: 
-        </div>
-        <div id="charts">
-            <div id="subcategoryPlot"></div>
-            <div id="programPlot"></div>
-            <div id="lcPlot"></div>
-            <div id="EcoPlot"></div>
+    <div class="middle-section">
+      <div id="content-section-default" class="content-section">
+        <div id="content">
+          <div id="content-detail">
+            <div id="title">
+             Description: 
+            </div>
+        
+            <P>This group of sites represent a wide range of typologies associated with former and current military use. Many of these sites are explicitly owned by branches of the US military, presenting in some ways an obstacle to their repurposing and in other ways a great latent potential for the mobilization of human and capital resources necessary for large-scale landscape transformation.</p> 
+            <p><strong>Weaponry:</strong>This site classification includes all sites with the potential presence of weapons or ammunition, from depots and sites of manufacture to bombing targets and firing ranges. Within this subclass, there is a range of potential danger involved in access to these sites. In some cases, specialized teams and equipment will be necessary to make sites safe for access or intervention.</p>   
+            <p><strong>Aviation:</strong> These are military airports or areas otherwise related to military aviation. With the exception of a small number of landfills and other disposal sites, the majority of the sites in this subcategory are operational military airfields, a typology with very strict security constraints. It can likely be assumed that for many of these sites, the contaminants present are jet fuel or related components or by-products thereof. Might be possible to group these sites with other aviation sites from other categories, possibly including aerospace sites.</p> 
+            <p><strong>Waste Management:</strong> Small number of landfills and dumps affiliated with the military. It is unclear whether this affiliation has an impact on the nature of the waste interred at these sites.</p> 
+            <p class="more-description hidden">.......</p>
+            <button class="toggle-more-description">Show more...</button>
+          </div>
+          <div id="chart-section">
+            <div id="chart-title">
+              Charts for Analysis: 
+            </div>
+            <div id="charts">
+                <div id="subcategoryPlot"></div>
+                <div id="programPlot"></div>
+                <div id="lcPlot"></div>
+                <div id="EcoPlot"></div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Weaponry Section Shown-->
+      <div id="content-section-weaponry" class="content-section hidden">
+        <div id="weaponry-section">
+          <div id="analysis-section">
+            <div id="analysis-title">
+              Weaponry Key Contamination: 
+            </div>
+            <div id="analysis-content">
+              <ul style=“list-style-type:square”>
+                <!-- <strong><li>Weaponry Contamination:</li></strong><br>-->
+                <li>Ground contamination (Lead);</li><br>
+                <li>Ground contamination (Unexploded ordinance);</li><br>
+                <li>Ground contamination (...);</li><br>
+              </ul>
+              <p class="more-description hidden">.......</p>
+              <button class="toggle-more-description">Show more...</button>
+    
+            </div>
+          </div>
+          <div id="axon-section">
+            <div id="axon-title">
+              Typical Subcategory Axons: 
+            </div>
+            <div id="axon-img">
+              <div id="axon-box">
+                <a href="Military3.jpg" data-lightbox="Military3" data-title="Axon-Weaponry1"><img src="Military3.jpg" alt="Military example3"></a>
+                <p class="captain" style='margin-top: 25px'>description.description.description.</p>
+              </div>
+              <div id="axon-box">
+                <a href="Military4.jpg" data-lightbox="Military4" data-title="Axon-Weaponry2"><img src="Military4.jpg" alt="Military example4"></a>
+                <p class="captain">description.description.description.</p>
+              </div>
+            </div>
+          </div> 
+        </div> 
+        <div id="brownfield-grid1">
+      
+        </div>
+      </div>
+      <!-- Aviation Section Shown-->
+      <div id="content-section-aviation" class="content-section hidden">
+        <div id="aviation-section">
+          <div id="analysis-section">
+            <div id="analysis-title">
+              Aviation Key Contamination:
+            </div>
+            <div id="analysis-content">
+              <ul style=“list-style-type:square”>
+                <!-- <li><strong>Aviation Contamination:</strong></li><br>-->
+                <li>Air Contamination (Airplane exhaust);</li><br> 
+                <li>Surface Contamination;</li><br>
+                <li>Subsurface Ground Contamination (Jet fuel spills and leaks);</li><br>
+                <li>Subsurface Ground Contamination (Fire surppresant);</li><br>
+              </ul>
+              <p class="more-description hidden">.......</p>
+              <button class="toggle-more-description">Show more...</button>
+            </div>
+          </div>
+          <div id="axon-section">
+            <div id="axon-title">
+              Typical Subcategory Axons: 
+            </div>
+            <div id="axon-img">
+              <div id="axon-box">
+                <a href="Military1.jpg" data-lightbox="Military1" data-title="Axon-Aviation1"><img src="Military1.jpg" alt="Military example1"></a>
+                <p class="captain" style='margin-top: 25px'>description.description.description.</p>
+              </div>
+            </div>
+          </div> 
+        </div> 
+        <div id="brownfield-grid2">
+    
+        </div>
+      </div>
+
+      <!-- Waste Section Shown-->
+      <div id="content-section-waste" class="content-section hidden">
+        <div id="waste-section">
+          <div id="analysis-section">
+            <div id="analysis-title">
+             Waste Management Key Contamination: 
+            </div>
+            <div id="analysis-content">
+              <ul style=“list-style-type:square”>
+                <!-- <li><strong>Waste Management Contamination</strong></li><br>-->
+                <li>Surface Contamination;</li><br>
+                <li>Subsurface Ground Contamination (Jet fuel spills and leaks);</li><br>
+                <li>Subsurface Ground Contamination (Fire surppresant);</li><br>
+                <li>Groundwater Contamination;</li><br>
+              </ul>
+              <p class="more-description hidden">.......</p>
+              <button class="toggle-more-description">Show more...</button>
+            </div>
+          </div>
+          <div id="axon-section">
+            <div id="axon-title">
+              Typical Subcategory Axons: 
+            </div>
+            <div id="axon-img">
+              <div id="axon-box">
+                <a href="waste.jpg" data-lightbox="Military1" data-title="Axon-Waste"><img src="waste.jpg" alt="Military example5"></a>
+                <p class="captain" style='margin-top: 25px'>description.description.description.</p>
+              </div> 
+            </div>
+          </div> 
+        </div> 
+        <div id="brownfield-grid3">
+  
+        </div>
+      </div>
+
+      <!-- Facility Section Shown-->
+      <div id="content-section-facility" class="content-section hidden">
+        <div id="facility-section">
+          <div id="analysis-section">
+            <div id="analysis-title">
+              Facilities key Contamination: 
+            </div>
+            <div id="analysis-content">
+              <ul style=“list-style-type:square”>
+              <!-- <li><strong>Facilities Contamination</strong></li><br>-->
+                <li>Air Contamination (Airplane exhaust);</li><br>
+                <li>Surface Contamination;</li><br>
+                <li>Subsurface Ground Contamination (Jet fuel spills and leaks);</li><br>
+                <li>Subsurface Ground Contamination (Fire surppresant);</li><br>
+                <li>Groundwater Contamination;</li><br>
+              </ul>
+              <p class="more-description hidden">.......</p>
+              <button class="toggle-more-description">Show more...</button>
+            </div>
+          </div>
+          <div id="axon-section">
+            <div id="axon-title">
+              Typical Subcategory Axons: 
+            </div>
+            <div id="axon-img">
+              <div id="axon-box">
+                <a href="Military2.jpg" data-lightbox="Military2" data-title="Axon-Facility1"><img src="Military2.jpg" alt="Military example2"></a>
+                <p class="captain" style='margin-top: 25px'>description.description.description.</p>
+              </div> 
+              
+            </div>
+          </div> 
+        </div> 
+        <div id="brownfield-grid4">
+  
+        </div>
+      </div>
+    </div>
 
     
     <div class="bottom-section">
-      <div id="analysis-section">
-        <div id="analysis-title">
-          Key Information: 
-        </div>
-        <div id="analysis-content">
-          <ul style=“list-style-type:square”>
-            <strong><li>Weaponry Contamination:</li></strong><br>
-              <dt>Ground contamination (Lead, Unexploded ordinance);</dt><br>
-            <li><strong>Aviation Contamination:</strong></li><br>
-              <dt>Air Contamination (Airplane exhaust);</dt> 
-              <dt>Surface Contamination;</dt>
-              <dt>Subsurface Ground Contamination (Jet fuel spills and leaks);</dt>
-              <dt>Subsurface Ground Contamination (Fire surppresant);</dt><br>
-            <li><strong>Facilities Contamination</strong></li><br>
-              <dt>Air Contamination (Airplane exhaust);</dt>
-              <dt>Surface Contamination;</dt>
-              <dt>Subsurface Ground Contamination (Jet fuel spills and leaks);</dt>
-              <dt>Subsurface Ground Contamination (Fire surppresant);</dt>
-              <dt>Groundwater Contamination;</dt>
-            </ul>
-          <!--
-          <dl>
-                <dt>Weaponry: Ground contamination</dt>
-                  <dd>Lead <br>Unexploded ordinance</dd>
-                <dt>Aviation</dt>
-                <dt>Facilities</dt>
-          </dl>
-          -->
-
-          </div>
-        </div>
-      <div id="axon-section">
-        <div id="axon-title">
-          Typical Subcategory Axons: 
-        </div>
-        <div id="axon-img">
-          <a href="Military1.jpg" data-lightbox="Military1" data-title="My caption"><img src="Military1.jpg" alt="Military example1"></a>
-          <a href="Military2.jpg" data-lightbox="Military2" data-title="My caption"><img src="Military2.jpg" alt="Military example2"></a>
-          <a href="Military3.jpg" data-lightbox="Military3" data-title="My caption"><img src="Military3.jpg" alt="Military example3"></a>
-          <a href="Military4.jpg" data-lightbox="Military4" data-title="My caption"><img src="Military4.jpg" alt="Military example4"></a>
-      </div>
-      </div>
+     
 
     </div>
 <!--
@@ -138,9 +275,7 @@
       https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.337798,37.810550,9.67,0.00,0.00/1000x600@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA
 -->
 
-    <div id="brownfield-grid">
-      
-    </div>
+
     
 <!--
       <script>
@@ -163,7 +298,7 @@
       <img alt='static Mapbox map of the San Francisco bay area' src='https://api.mapbox.com/styles/v1/tiantianup/cl1v5lh0v000814mz35beqrsy/static/-122.337798,37.810550,4,0.00,0.00/200x200?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA'>
 -->
 
-    </div>
+
     <!-- 
     <script type="text/javascript" src="//ofmpub.epa.gov/sor_internet/js/searchWidget.js"></script>
 
@@ -183,5 +318,11 @@
 
     <!-- Exercise JavaScript -->
     <script src="Military-index.js"></script>
+    <!-- J query -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Lightbox2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- back icon-->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   </body>
 </html>

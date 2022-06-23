@@ -3,7 +3,7 @@ let map = L.map('map', {
 }).setView([38.301331, -96.277497], 4.5);
 
 
-L.tileLayer('https://api.mapbox.com/styles/v1/tiantianup/cl0ysuwz6000v14nt43hxd8vj/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA', {
+L.tileLayer('https://api.mapbox.com/styles/v1/tiantianup/cl4plfwpp001714uk8is23nts/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGlhbnRpYW51cCIsImEiOiJja2MzZThibzEwOTAyMnF0Z2syeWszN3J6In0.gp4Ekf3SFQdYe605993jQA', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 

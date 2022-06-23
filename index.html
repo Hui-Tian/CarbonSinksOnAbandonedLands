@@ -9,13 +9,28 @@
         crossorigin=""/>
         <link rel="stylesheet" href="index.css">
     </head>
+    <!-- Side Navigation Bar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <body>
       <div id="header">
         Carbon Sinks On Abandoned Lands
       </div>  
+      	<!-- Logo 
+        <div id="logo">
+          <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+          <h1 id="title">Logo</h1>       
+        </div>-->
+
+      <div class="sidenav">
+        <a href="#header">PROJECT OVERVIEW</a>
+        <a href="#category">BROWNFIELD CATEGORIES</a>
+        <a href="#link">BROWNFIELD TOOLKIT</a>
+        <a href="#about">ABOUT PROJECT</a>
+      </div>
+
       <div id="central">
       <div class="top-section">
-        <div class="right-panel">    
+        <div class="left-panel">    
           <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Category Group</button>
             <div id="myDropdown" class="dropdown-content">
@@ -35,16 +50,36 @@
       </div> 
       <div class="middle-section">
         <div id="content-section">
-          <div id="title">
-            Description: 
-          </div>
           <div id="content">
-          <P>
+            <div id="title">
+              PROJECT OVERVIEW:
+            </div>
+            <P>
               The U.S. Environmental Protection Agency (EPA) created the RE-Powering America’s Land Initiative to demonstrate the enormous potential that contaminated lands, landfills, and mine sites provide for developing renewable energy in the United States. Here is a RE-Powering Mapper tool to show spatial database of more than 75,000 sites that have been evaluated for renewable energy potential.
-          </P>
+            </P>
           </div>
-        </div>
-      </div>  
+          <div id="category">
+            <div id="title">
+              BROWNFIELD CATEGORIES: 
+            </div>
+            <ul style=“list-style-type:square”>
+              <li>Agriculture Brownfield</li><br>
+              <li>Industry Brownfield</li><br>
+              <li>Institutional Brownfield</li><br>
+              <li>Military Brownfield</li><br>
+              <li>Mine Brownfield</li><br>
+              <li>Petrochemical Brownfield</li><br>
+              <li>Unclassified Brownfield</li><br>
+              <li>Waste Management Brownfield</li><br>
+            </ul>
+          </div>
+          <div id="about">
+            <div id="title">
+              ABOUT PROJECT: 
+            </div>
+          </div>
+          </div>
+        </div>  
          <!-- Make sure you put this AFTER Leaflet's CSS -->
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
