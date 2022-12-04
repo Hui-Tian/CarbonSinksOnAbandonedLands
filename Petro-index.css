@@ -193,10 +193,10 @@ body {
 
 .show {display: block;}
 
-.dropdown-content .Railways .color-dot {
+.dropdown-content .Rail .color-dot {
   background-color: #514663;
 }
-.dropdown-content .Automobiles .color-dot {
+.dropdown-content .Automotive .color-dot {
   background-color: #4D5382;
 }
 .dropdown-content .Gas_Stations .color-dot {
@@ -207,6 +207,9 @@ body {
 }
 .dropdown-content .Processing_Transport .color-dot {
   background-color: #CACF85;
+}
+.dropdown-content .Unclassified .color-dot {
+  background-color: #00FF00;
 }
 .color-dot {
   display: inline-block;
@@ -343,7 +346,7 @@ button {
   display: inline-block;
   margin-left: 1rem;
   background-color: #f8d849;
-  color: black;
+  color: rgb(79, 18, 18);
   padding: 6px;
   width: 6%;
   font-size: 12px;

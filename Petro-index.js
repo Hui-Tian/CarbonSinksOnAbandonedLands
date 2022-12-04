@@ -59,10 +59,11 @@ const lcCount = {
 // Define features in Claasification Charts//
 const subcatCount = {
   Railways: 0,
-  Automobiles: 0,
+  Automotive: 0,
   'Gas Stations': 0,
   Gasification: 0,
-  'Processing+Transport': 0,
+  'Processing + Transport': 0,
+  Unclassified: 0,
 };
 
 // Define features in Program_General Charts//
@@ -93,34 +94,40 @@ const ecoregionCount = {
 
 // Color for legend, responding to Geojson//
 const Petroclass = {
-  PC_Rail: '#514663',
-  PC_Auto: '#4D5382',
-  PC_GasStations: '#658E9C',
-  PC_Gasification: '#8CBA80',
-  PC_ProcTrans: '#CACF85',
+  Automotive: '#514663',
+  Gas_Stations: '#658E9C',
+  Gasification: '#8CBA80',
+  Railways: '#4D5382',
+  Processing_Transport: '#CACF85',
+  Unclassified:'#00FF00',
+
 };
 // Name for Map dot legend, responding to Geojson//
 const Petrolabels = {
-  Railways: 'PC_Rail',
-  Automobiles: 'PC_Auto',
-  'Gas Stations': 'PC_GasStations',
-  Gasification: 'PC_Gasification',
-  'Processing + Transport': 'PC_ProcTrans',
+
+  Automotive: 'Automotive',
+  Gas_Stations: 'GasStations',
+  Gasification: 'Gasification',
+  Railways: 'Rail',
+  Processing_Transport: 'Processing & Transport',
+  Unclassified: 'Petrochemical Unclassified',
 };
 // Name for subcategory chart (opposite way compared to Map dot legends)
 const subtypeChartLabels = {
-  PC_Rail: 'Railways',
-  PC_Auto: 'Automobiles',
-  PC_GasStations: 'Gas Stations',
-  PC_Gasification: 'Gasification',
-  PC_ProcTrans: 'Processing+Transport',
+  Rail: 'Railways',
+  Automotive: 'Automotive',
+  GasStations: 'Gas_Stations',
+  Gasification: 'Gasification',
+  'Processing & Transport': 'Processing_Transport',
+  'Petrochemical Unclassified':'Unclassified',
 };
 
 const Railways_button = document.querySelector('.Railways');
-const Automobiles_button = document.querySelector('.Automobiles');
+const Automobiles_button = document.querySelector('.Automotive');
 const Gas_Stations_button = document.querySelector('.Gas_Stations');
 const Gasification_button = document.querySelector('.Gasification');
 const Processing_Transport_button = document.querySelector('.Processing_Transport');
+const Unclassified_button = document.querySelector('.Unclassified');
 
 // Legends on map//
 let legend = L.control({ position: 'bottomright' });
@@ -191,7 +198,7 @@ let subcategoryShow = (features) => {
 
     const jsonLayer = L.geoJSON(feature, {
       pointToLayer(feature2, latlng) {
-        const classification = feature2.properties.Classification;
+        const classification = feature2.properties.Subgroup;
         const classColor = Petroclass[classification];
 
         let geojsonMarkerOptions = {
@@ -234,7 +241,7 @@ let subcategoryShow = (features) => {
     programCount[programtype] += 1;
 
     // Count "Classification" from Geojson to program chart
-    const subtype = feature.properties.Classification;
+    const subtype = feature.properties.Subgroup;
     const stChartLabel = subtypeChartLabels[subtype];
     subcatCount[stChartLabel] += 1;
 
@@ -273,7 +280,7 @@ legendRadius.addTo(map);
 
 // Fetch geojson file
 let jsonData;
-fetch('Petrochemical5.geojson')
+fetch('Petrochemical.geojson')
   .then(resp => resp.json())
   .then(data => {
     jsonData = data;
@@ -481,15 +488,16 @@ let readMoreButton = () => {
 readMoreButton();
 
 let filterJson = (classification) => {
-  const subMarker = jsonData.features.filter(f => f.properties.Classification === classification);
+  const subMarker = jsonData.features.filter(f => f.properties.Subgroup === classification);
   subcategoryShow(subMarker);
 };
 // button legend to filter subcategories from Geojson
-Railways_button.addEventListener('click', () => { filterJson('PC_Rail'); });
-Automobiles_button.addEventListener('click', () => { filterJson('PC_Auto'); });
-Gas_Stations_button.addEventListener('click', () => { filterJson('PC_GasStations'); });
-Gasification_button.addEventListener('click', () => { filterJson('PC_Gasification'); });
-Processing_Transport_button.addEventListener('click', () => { filterJson('PC_ProcTrans'); });
+Railways_button.addEventListener('click', () => { filterJson('Rail'); });
+Automobiles_button.addEventListener('click', () => { filterJson('Automotive'); });
+Gas_Stations_button.addEventListener('click', () => { filterJson('GasStations'); });
+Gasification_button.addEventListener('click', () => { filterJson('Gasification'); });
+Processing_Transport_button.addEventListener('click', () => { filterJson('Processing & Transport'); });
+Unclassified_button.addEventListener('click', () => { filterJson('Petrochemical Unclassified'); });
 
 // Quartile 1
 setTimeout(() => {
